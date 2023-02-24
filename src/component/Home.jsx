@@ -1,9 +1,19 @@
 import { motion, useAnimation, AnimatePresence } from "framer-motion";
+import { Link, BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import AboutMe from "./pages/Aboutme";
+import NavBar from "./NavBar";
 
 export default function Home() {
+
+
   return (
-    <div className="loading-container">
-      <motion.div className="glitch">Hello World</motion.div>
-    </div>
+    <BrowserRouter>
+    <NavBar/>
+      <AnimatePresence mode='wait'>
+        <Routes>
+          <Route path="/" element={<AboutMe />} />
+        </Routes>
+      </AnimatePresence>
+    </BrowserRouter>
   );
 }
