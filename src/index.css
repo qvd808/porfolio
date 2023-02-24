@@ -24,12 +24,14 @@ body {
 }
 
 .nav ul {
+  position: fixed;
   width: 55%;
   display: flex;
   list-style: none;
   padding: 0;
   margin: 0;
   justify-content: space-around;
+  padding-top: 2em;
 }
 
 .nav li {
@@ -58,7 +60,7 @@ body {
 .about-title {
   /* color: red; */
   text-transform: uppercase;
-  padding-top: 1.5em;
+  padding-top: 4em;
 }
 
 .about-content {
@@ -67,6 +69,23 @@ body {
 
 .about-content ul{
   list-style: none;
+}
+
+.project-content{
+  padding-top: 3em;
+  color: red;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.project-card {
+  width: 20vw;
+  height: 20vw;
+  background-color: bisque;
+  box-shadow: darkorchid;
+  margin: 8px;
+  text-align: center;
 }
 
 .right-to-left{
