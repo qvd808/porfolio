@@ -1,16 +1,22 @@
 body {
   margin: 0;
   padding: 0;
+}
+
+.loading-container{
+  margin: 0;
+  padding: 0;
   background: #222;
   min-height: 100vh;
   display: grid;
   place-items: center;
-}
-
-.App{
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.App{
+  
 }
 
 .right-to-left{
@@ -29,4 +35,5 @@ body {
   font-size: 80px;
   text-transform: uppercase;
   color: white;
+  position: absolute;
 }
