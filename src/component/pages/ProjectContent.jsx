@@ -1,6 +1,18 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import ReactMarkdown from "react-markdown";
+import { motion } from "framer-motion";
+
+
+const container = {
+  hidden: {
+    opacity: 0,
+  },
+  visible: (i = 1) => ({
+    opacity: 1,
+    transition: { staggerChildren: 0.05, delayChildren: i * 0 },
+  }),
+};
 
 export default function ProjectContent({ name }) {
   const ProjectName = name.split(".md")[0];
@@ -17,15 +29,21 @@ export default function ProjectContent({ name }) {
   }, []);
 
   return (
-    <div className="project-card">
-      <div className="project-title"
+    <motion.div
+      className="project-card"
+      whileHover={{
+        scale: 1.1,
+        cursor: "pointer",
+      }}
+    >
+      <div className="project-title">{ProjectName}</div>
+      <motion.div className="project-card-content"
+      variants={container}
+        initial="hidden"
+        animate="visible"
       >
-        {ProjectName}
-      </div>
-      <div className="project-card-content">
-        Desscription
         <ReactMarkdown>{projectData}</ReactMarkdown>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 }

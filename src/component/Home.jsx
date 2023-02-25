@@ -3,19 +3,22 @@ import { Link, BrowserRouter, Routes, Route, useLocation } from "react-router-do
 import AboutMe from "./pages/Aboutme";
 import NavBar from "./NavBar";
 import Projects from "./pages/Projects";
+import MainPage from "./pages/MainPage";
 
 export default function Home() {
 
+    const location = useLocation();
 
   return (
-    <BrowserRouter>
+    <>
       <NavBar />
       <AnimatePresence mode="wait">
-        <Routes>
-          <Route path="/" element={<AboutMe />} />
-          <Route path="/projects" element={<Projects />} />
+        <Routes location={location} key={location.pathname}>
+          <Route  path="/" element={<MainPage />} />
+          <Route  path="/projects" element={<Projects />} />
+          <Route  path="/about" element={<AboutMe />} />
         </Routes>
       </AnimatePresence>
-    </BrowserRouter>
+    </>
   );
 }
