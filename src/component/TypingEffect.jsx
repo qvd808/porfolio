@@ -1,55 +1,55 @@
-import { motion, useAnimation } from "framer-motion";
-import { useEffect } from "react";
+import { animate, motion } from "framer-motion";
+import { useEffect, useState } from "react";
 
-const TypingAnimation = () => {
-  const controls = useAnimation();
+const textEffect = {
+  initial: {
+    opacity: 1,
+  },
 
-  useEffect(() => {
-    const sequence = async () => {
-      await controls.start({ opacity: 1 });
-      await controls.start({ width: "100%" });
-      await controls.start({ opacity: 0 });
-      await controls.start({ width: "0%" });
-      await sequence();
-    };
-    sequence();
-  }, [controls]);
+  animate: (delay) => ({
+    opacity: [0,1],
+    x: [50, 0],
+    pointer: "cursor",
+    transition: {
+      delay: delay * 0.1,
+      duration: 0.5,
+      times: [0.1, 1]
+    }
+  })
+
+}
+
+
+export default function TextEffect({text, isHovered, setIsHovered}) {
+
+  useEffect(()=> {
+    const timeId = setTimeout(() => {
+      setIsHovered(false);
+    }, 250*text.length)
+
+    return () => clearTimeout(timeId)
+  }, [isHovered])
 
   return (
-    <motion.div
-      style={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        height: "100px",
-        width: "300px",
-        overflow: "hidden",
-        backgroundColor: "#fff",
-        border: "2px solid #333",
-        borderRadius: "5px",
-        padding: "10px",
-      }}
-    >
-      <motion.div
-        animate={controls}
-        style={{
-          height: "100%",
-          width: "0%",
-          backgroundColor: "#333",
-        }}
-      ></motion.div>
-      <motion.p
-        style={{
-          margin: "0",
-          padding: "0",
-          fontSize: "24px",
-          color: "#333",
-        }}
-      >
-        Hello, world!
-      </motion.p>
-    </motion.div>
-  );
-};
+    <div >
 
-export default TypingAnimation;
+      {
+        text.split("").map((char, idx) => {
+          return (
+            <motion.span
+            key={idx}
+            variants={textEffect}
+            animate={isHovered? custom => ({...textEffect.animate(custom), custom}) : "initial"}
+            custom={idx}
+        >
+          {char}
+        </motion.span>
+          )
+        })
+      }
+    
+
+
+    </div>
+  );
+}

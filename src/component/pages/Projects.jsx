@@ -17,7 +17,8 @@ export default function Projects() {
   useEffect(() => {
     async function fetchData() {
       const result = await httpClient.get("/");
-      setProjects(result.data);
+      const data = result.data.filter(file => file.name.endsWith('.md'))
+      setProjects(data);
     }
     fetchData();
   }, []);
