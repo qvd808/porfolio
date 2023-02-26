@@ -5,11 +5,11 @@ export default function NavBar(){
       <nav className="nav" >
         <ul>
           <li>
-            <NavLink to="/">Home</NavLink>
+            <NavLink to="/">About</NavLink>
           </li>
-          <li>
+          {/* <li>
             <NavLink to="/about">About</NavLink>
-          </li>
+          </li> */}
           <li>
             <NavLink to="/projects">Projects</NavLink>
           </li>
