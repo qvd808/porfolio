@@ -1,7 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech&display=swap');
+
 body {
   margin: 0;
   padding: 0;
-  background-image: url("https://i.imgur.com/H3e9z0b.gif");
+  /* background-image: url("https://i.imgur.com/H3e9z0b.gif"); */
 }
 
 .loading-container{
@@ -63,8 +65,56 @@ body {
 }
 
 .about-content {
-  color: red;
+  align-items: center;
 }
+
+.container-display-about{
+  width: 80%;
+  height: 30em;
+  background-color: brown;
+  display: flex;
+  /* align-items: center; */
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.skill-display{
+  display: grid;
+  grid-template-columns: 20% 35% 45%;
+  align-items: center;
+  grid-auto-rows: minmax(0, 10em);
+  transform: translateX(10em);
+}
+
+.skill-display-text{
+  grid-column: 1 / span 1;
+  grid-row: 1 / span 1;
+
+  padding: 1em;
+  text-transform: uppercase;
+  font-size: 1.5em;
+  font-family: 'Share Tech', sans-serif;
+}
+.skill-display-animation{
+  grid-column: 2 / span 1;
+  grid-row:  1 / span 1;
+}
+
+.circle-text {
+  width: 10em;
+  height: 10em;
+  background-color: red;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+  /* -webkit-mask-image: radial-gradient(circle at 50% 50%, transparent 50%, white 50%); */
+  /* mask-image: radial-gradient(circle at 50% 50%, transparent 50%, white 50%); */
+}
+
 
 .about-content ul{
   list-style: none;
