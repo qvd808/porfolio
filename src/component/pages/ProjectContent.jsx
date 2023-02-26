@@ -16,10 +16,20 @@ const container = {
 };
 
 export default function ProjectContent({ name }) {
+ 
+
+  function pascalCaseToSentence(pascalCaseString) {
+    const sentenceString = pascalCaseString.replace(/[A-Z]/g, match => ` ${match.toLowerCase()}`);
+
+    return sentenceString.replace(/(^|\s)\S/g, match => match.toUpperCase());
+  }
   const ProjectName = name.split(".md")[0];
   const gifLink = `https://raw.githubusercontent.com/qvd808/Porfolio-site-content/main/${ProjectName}.gif`
   const [projectData, setProjectData] = useState("");
   const [isHovered, setIsHovered] = useState(false);
+  const sentence = pascalCaseToSentence(ProjectName)
+  
+
 
 
   useEffect(() => {
@@ -41,9 +51,10 @@ export default function ProjectContent({ name }) {
         boxShadow: "0 0 2em 0 rgba(255, 255, 255, 1)",
       }}
       onMouseEnter={()=>setIsHovered(true)}
+      onClick={()=>{window.open(`https://github.com/qvd808/${ProjectName}`, "_blank")}}
     >
       <div className="project-title">
-        <TextEffect text={ProjectName} isHovered={isHovered} setIsHovered={setIsHovered}/>
+        <TextEffect text={sentence} isHovered={isHovered} setIsHovered={setIsHovered}/>
       </div>
       <motion.div className="project-card-content"
         variants={container}
