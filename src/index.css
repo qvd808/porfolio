@@ -101,8 +101,8 @@ body {
 }
 
 .circle-text {
-  width: 10em;
-  height: 10em;
+  width: 5em;
+  height: 5em;
   background-color: red;
   border-radius: 100%;
   display: flex;
@@ -111,10 +111,15 @@ body {
   font-size: 24px;
   font-weight: bold;
   color: white;
-  /* -webkit-mask-image: radial-gradient(circle at 50% 50%, transparent 50%, white 50%); */
-  /* mask-image: radial-gradient(circle at 50% 50%, transparent 50%, white 50%); */
 }
 
+.about-circle-choice{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 50%;
+  margin-top: 3em;
+}
 
 .about-content ul{
   list-style: none;

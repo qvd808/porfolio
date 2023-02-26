@@ -1,73 +1,34 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import Lottie from "lottie-react";
-import Complete from "./Complete.json"
 
-const movingCircle = {
-  initial: {
-    opacity: 1,
-    scale: 1,
-    x: "-16em",
-    y: "5em"
-  },
+import SkillLoadingEffect from "../SkillLoadingEffect";
+import Introduction from "../Introduction";
 
-  circle2: {
-    width: "4em",
-    height: "4em",
-    scale: 1,
-    x: "-21em",
-    y: "3.75em"
-  },
-
-  smallCircleGoIn: {
-    borderRadius: 0,
-    // scale: 4,
-    width: "20em",
-    height: "20em",
-    x: 0,
-    y: 0,
-    transition: {
-      duration: 1,
-      ease: "easeIn",
-      type: "spring"
-    }
-
-  },
-
-  animate: {
-    scale: 2,
-    x: 0,
-    transition: {
-      duration: 1,
-      ease: "easeIn",
-      type: "spring"
-    }
-  },
-
-  exit: {
-    opacity: 0
-  }
-
-}
 
 export default function AboutMe() {
 
-  const [isHovered, setIsHovered] = useState(false);
-  const [circle2Hover, setCircle2Hover] = useState(false);
-  const [animationComplete, setAnimationComplete] = useState(false);
-  const [circle2Data, setCircle2Data] = useState("Skill");
-  const skills = ["Python", "JavaScript", "React", "React Native"]
+  const [isMouseDown, setIsMouseDown] = useState(false);
+  const [isSkillDisplayed, setIsSkillDisplayed] = useState(false);
+  const [isIntroductionDisplayed, setIsIntroductionDisplayed] = useState(false);
 
-  useEffect(() => {
 
-    if (circle2Hover === true) {
-      setCircle2Data("Python, Rust, Javascript")
-    } else {
-      setCircle2Data("Skill")
+  const parentVariants = {
+    initial: {},
+    animate: { transition: { staggerChildren: 0.3, delayChildren: 0.8 }, },
+    exit: { transition: { staggerChildren: 0.1 }, }
+  };
 
+  const childVariants = {
+    initial: { opacity: 0, y: 50 },
+    animate: {
+      opacity: 1, y: 0, transition: {
+        type: "spring",
+      }
+    },
+    exit: {
+      opacity: 0, y: 50
     }
-
-  }, [circle2Hover])
+  };
 
   return (
     <motion.div
@@ -86,57 +47,60 @@ export default function AboutMe() {
       }}
     >
 
-        <div className="about-title">
-          <h1>About me</h1>
-        </div>
+      <div className="about-title">
+        <h1>About me</h1>
+      </div>
+      <AnimatePresence>
+        {!isMouseDown && (
+          <motion.div className="about-circle-choice"
+            key="choice"
+            variants={parentVariants} initial="initial" animate="animate" exit="exit"
+          >
+            <motion.div
+              className="circle-text"
+              key="circle1"
+              variants={childVariants}
+              onMouseDown={() => {
+                setIsMouseDown(true)
+                setIsSkillDisplayed(true)
+              }}>
+              Skills
+            </motion.div>
 
-        <div className="container-display-about">
-          {
-            skills.map((skill) => (
-              <div className="skill-display"
-                style={{
-                  height: "5em"
-                }}
-              >
-                <div className="skill-display-text">
-                  {skill}
-                </div>
-                <motion.div
-                  className="skill-display-animation"
-                  initial={{
-                    width: 0,
-                    height: "1.5em",
-                    backgroundColor: "#60f542"
-                  }}
-                  animate={{
-                    width: "20em",
-                    transition: {
-                      duration: 1,
-                      delay: 2,
-                    }
-                  }}
+            <motion.div className="circle-text" variants={childVariants}
+              key="circle2"
+              onMouseDown={() => {
+                setIsMouseDown(true)
+                setIsIntroductionDisplayed(true)
+              }}>
+              About me
+            </motion.div>
 
-                  onAnimationComplete={() => setAnimationComplete(true)}
-                />
-                {
-                  animationComplete && (
-                    <Lottie
-                      style={{
-                        width: "100px",
-                        height: "100px"
-                      }}
-                      animationData={Complete}
-                      autoplay
-                      loop={false}
-                    />
-                  )
-                }
+            <motion.div className="circle-text" variants={childVariants}
+              key="circle3"
+            >
+              Skills
+            </motion.div>
 
-              </div>
-            ))
-          }
-        </div>
+          </motion.div>
+        )
+        }
 
+        {isSkillDisplayed && (
+          <SkillLoadingEffect key="display1" onMouseDown={() => {
+            setIsMouseDown(false)
+            setIsSkillDisplayed(false)
+          }} />
+        )}
+
+        {isIntroductionDisplayed && (
+          <Introduction key="display2" onMouseDown={()=> {
+            setIsMouseDown(false)
+            setIsIntroductionDisplayed(false)
+          }} />
+        )}
+
+      </AnimatePresence>
 
 
     </motion.div>

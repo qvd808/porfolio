@@ -16,7 +16,7 @@ function App() {
               opacity: 0,
             }}
             transition={{
-              duration: 0.5
+              duration: 0.5,
             }}
           >
             <GlitchText key="loading" setIsPlaying={setIsPlaying} />
@@ -33,7 +33,7 @@ function App() {
             }}
             transition={{
               duration: 1,
-              delay: 0.5
+              delay: 0.5,
             }}
           >
             <Home key="home"/>
