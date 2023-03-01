@@ -1,9 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Share+Tech&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 
 body {
   margin: 0;
   padding: 0;
-  /* background-image: url("https://i.imgur.com/H3e9z0b.gif"); */
+  background-image: url("https://i.imgur.com/H3e9z0b.gif");
 }
 
 .loading-container{
@@ -112,6 +113,31 @@ body {
   font-weight: bold;
   color: white;
 }
+
+.intro-display{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.intro-display ul{
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 50%;
+}
+
+.intro-display li{
+  font-family: 'Pacifico', cursive;
+  font-size: 1.3em;
+  color: rgb(235, 237, 222);
+}
+
+.head-shot{
+  width: fit-content;
+  height: "100px";
+} 
 
 .about-circle-choice{
   display: flex;

@@ -1,14 +1,8 @@
 import { motion } from "framer-motion";
 import Lottie from "lottie-react";
-import Complete from "./Complete.json"
 import { useState } from "react";
-import HeadShot from "./HeadShot.jpeg"
 
-export default function Introduction({onMouseDown}) {
-
-    const [animationComplete, setAnimationComplete] = useState(false);
-
-    const skills = ["Python", "JavaScript", "React", "React Native"]
+export default function Contact({onMouseDown}) {
 
     const animationEffect = {
         initial: { opacity: 0, y: "30em" },
@@ -40,26 +34,15 @@ export default function Introduction({onMouseDown}) {
             <div className="intro-display">
                 <ul>
                     <li>
-                        I enjoy solving problem around me
+                        Linkdn
                     </li>
                     <li>
-                        I love exploring new ideas and pushing boundaries
+                        GitHub
                     </li>
                     <li>
-                        I believe in the idea that to solve bigger problem, we should start with solving smaller part of it first
+                        Email
                     </li>
                 </ul>
-                <motion.img style={{
-                    width: "17em",
-                    height: "fit-content",
-                    borderRadius: "10%",
-                }} 
-                whileHover={{
-                    scale: 1.1,
-                    cursor: "pointer",
-                    boxShadow: "0 0 2em 0 rgba(255, 255, 255, 1)",
-                  }}
-                src={HeadShot}/>
             </div>
 
         </motion.div>

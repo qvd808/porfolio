@@ -30,7 +30,11 @@ export default function SkillLoadingEffect({onMouseDown}) {
             initial="initial"
             animate="animate"
             exit="exit"
-            onMouseDown={onMouseDown}    
+            onMouseDown={onMouseDown}
+            whileHover={{
+                cursor: "pointer",
+                boxShadow: "0 0 2em 0 rgba(245, 235, 132, 0.75)",
+            }}  
         >
           {
             skills.map((skill, idx) => (
