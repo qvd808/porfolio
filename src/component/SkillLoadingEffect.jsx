@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import Lottie from "lottie-react";
-import Complete from "./Complete.json"
+import Complete from "./animation/Complete.json"
 import { useState } from "react";
 
 export default function SkillLoadingEffect({onMouseDown}) {

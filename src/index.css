@@ -146,7 +146,27 @@ body {
 .head-shot{
   width: fit-content;
   height: "100px";
-} 
+}
+
+.contact-display{
+  align-items: center;
+  align-self: center;
+  width: 50%;
+
+}
+
+.contact-display ul{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  list-style: none;
+}
+
+.contact-display li{
+  font-family: 'Pacifico', cursive;
+  font-size: 1.3em;
+  color: rgb(235, 237, 222);
+}
 
 .about-circle-choice{
   display: flex;
