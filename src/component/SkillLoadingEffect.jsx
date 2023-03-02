@@ -60,7 +60,7 @@ export default function SkillLoadingEffect({onMouseDown}) {
                     backgroundColor: "#60f542"
                   }}
                   animate={{
-                    width: "20em",
+                    width: "40em",
                     transition: {
                       duration: 1,
                       delay: 1.2,
@@ -77,6 +77,7 @@ export default function SkillLoadingEffect({onMouseDown}) {
                         width: "100px",
                         height: "100px"
                       }}
+                      className="animation-complete"
                       animationData={Complete}
                       autoplay
                       loop={false}
