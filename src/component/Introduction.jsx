@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import Lottie from "lottie-react";
 import Complete from "./animation/Complete.json"
 import { useState } from "react";
-import HeadShot from "./HeadShot.jpeg"
+import HeadShot from "../assets/HeadShot.jpeg"
 
 export default function Introduction({onMouseDown}) {
 
