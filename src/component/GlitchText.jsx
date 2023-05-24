@@ -80,21 +80,23 @@ function GlitchText({setIsPlaying}) {
 
   return (
     <AnimatePresence>
-      <motion.div className="loading-container">
+      <motion.div className="h-screen bg-[#222] grid place-items-center justify-center items-center">
         <motion.div
-          className="glitch"
+          className="text-8xl uppercase text-white absolute"
           variants={glitch}
           animate="textEffect"
           transition={{
             duration: 0.5,
             times: [0, 0.14, 0.15, 0.49, 0.5, 0.99, 1],
+            repeatType: "loop",
+            repeat: Infinity
           }}
           key={`${text[index]}1`}
         >
           {text[index]}
         </motion.div>
         <motion.div
-          className="glitch"
+          className="text-8xl uppercase text-white absolute"
           style={{
             position: "absolute",
             clipPath: "polygon(0 0, 100% 0, 100% 45%, 0 45%)",
@@ -112,7 +114,7 @@ function GlitchText({setIsPlaying}) {
           {text[index]}
         </motion.div>
         <motion.div
-          className="glitch"
+          className="text-8xl uppercase text-white absolute"
           style={{
             position: "absolute",
             clipPath: "polygon(0 80%, 100% 20%, 100% 100%, 0 100%)",

@@ -2,15 +2,16 @@ import {NavLink} from "react-router-dom"
 
 export default function NavBar(){
     return (
-      <nav className="nav" >
-        <ul>
-          <li>
+      <nav className="relative flex w-full flex-nowrap items-center justify-between bg-neutral-100 py-2 text-neutral-500 shadow-lg hover:text-neutral-700 focus:text-neutral-700 dark:bg-neutral-600 lg:flex-wrap lg:justify-start lg:py-4">
+
+        <ul className="flex flex-row mx-auto py-4 space-x-10">
+          <li className="font-medium text-5xl">
             <NavLink to="/qvd-portfolio">About</NavLink>
           </li>
           {/* <li>
             <NavLink to="/about">About</NavLink>
           </li> */}
-          <li>
+          <li className="font-medium text-5xl">
             <NavLink to="/qvd-portfolio/projects">Projects</NavLink>
           </li>
         </ul>

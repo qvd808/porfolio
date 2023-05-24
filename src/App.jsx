@@ -2,6 +2,9 @@ import { motion, useAnimation, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 import GlitchText from "./component/GlitchText";
 import Home from "./component/Home";
+import NavBar from "./component/NavBar";
+import './index.css'   
+
 
 function App() {
   const [isPlaying, setIsPlaying] = useState(true);
