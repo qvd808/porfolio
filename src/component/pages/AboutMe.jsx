@@ -33,7 +33,7 @@ export default function AboutMe() {
 
   return (
     <motion.div
-      className="about"
+      className="flex flex-col items-center min-h-screen bg-gray-900 text-white"
       initial={{
         x: "-100vw",
       }}
@@ -48,17 +48,17 @@ export default function AboutMe() {
       }}
     >
 
-      <div className="about-title">
+      <div className="text-4xl mx-auto p-4">
         <h1>About me</h1>
       </div>
       <AnimatePresence>
         {!isMouseDown && (
-          <motion.div className="about-circle-choice"
+          <motion.div className="flex mx-auto py-4 space-x-10"
             key="choice"
             variants={parentVariants} initial="initial" animate="animate" exit="exit"
           >
             <motion.div
-              className="circle-text"
+              className="w-24 h-24 rounded-full flex justify-center items-center bg-red-500 text-white text-xl md:w-40 md:h-40"
               key="circle1"
               variants={childVariants}
               onMouseDown={() => {
@@ -73,7 +73,8 @@ export default function AboutMe() {
               Skills
             </motion.div>
 
-            <motion.div className="circle-text" variants={childVariants}
+            <motion.div
+              className="w-{24} h-{24} rounded-full flex justify-center items-center bg-red-500 text-white text-xl md:w-40 md:h-40" variants={childVariants}
               key="circle2"
               onMouseDown={() => {
                 setIsMouseDown(true)
@@ -84,10 +85,12 @@ export default function AboutMe() {
                 boxShadow: "0 0 2em 0 rgba(245, 235, 132, 0.75)",
               }}
             >
-              About me
+              About Me
+
             </motion.div>
 
-            <motion.div className="circle-text" variants={childVariants}
+            <motion.div
+              className="w-{24} h-{24} rounded-full flex justify-center items-center bg-red-500 text-white text-xl md:w-40 md:h-40" variants={childVariants}
               key="circle3"
               onMouseDown={() => {
                 setIsMouseDown(true)

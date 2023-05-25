@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import GlitchText from "./component/GlitchText";
 import Home from "./component/Home";
 import NavBar from "./component/NavBar";
-import './index.css'   
+import './index.css'
 
 
 function App() {

@@ -1,3 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+body {
+    background-image: url("./assets/loading_orca_swim.gif");
+}
+
+
+.sharetech {
+    font-family: 'Share Tech', sans-serif;
+    font-weight: 400;
+}
+
+.pacifico {
+    font-family: 'Pacifico', cursive;
+    font-weight: 400;
+}

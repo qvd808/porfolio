@@ -12,13 +12,16 @@ export default function Home() {
   return (
     <>
       <NavBar />
-      
-      {/* <AnimatePresence mode="wait">
-        <Routes location={location} key={location.pathname}>
-          <Route exact path="/qvd-portfolio" element={<AboutMe />} />
-          <Route  exact path="/qvd-portfolio/projects" element={<Projects />} />
-        </Routes>
-      </AnimatePresence> */}
+
+      {/* <div className="flex flex-col items-center min-h-screen bg-gray-900 text-white"> */}
+        <AnimatePresence mode="wait">
+          <Routes location={location} key={location.pathname}>
+            <Route exact path="/qvd-portfolio" element={<AboutMe />} />
+            <Route  exact path="/qvd-portfolio/projects" element={<Projects />} />
+          </Routes>
+        </AnimatePresence>
+      {/* </div> */}
+
     </>
   );
 }
