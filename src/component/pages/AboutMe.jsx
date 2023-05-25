@@ -49,7 +49,7 @@ export default function AboutMe() {
     >
 
       <div className="text-4xl mx-auto p-4">
-        <h1>About me</h1>
+        <h1>Hello, There!!!</h1>
       </div>
       <AnimatePresence>
         {!isMouseDown && (
