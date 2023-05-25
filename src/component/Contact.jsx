@@ -33,7 +33,7 @@ export default function Contact({ onMouseDown }) {
 
     return (
         <motion.div
-            className="container-display-about"
+            className="w-4/5 h-96 bg-red-700 flex flex-col justify-evenly md:h-96"
             key="info"
             variants={animationEffect}
             initial="initial"
@@ -49,19 +49,13 @@ export default function Contact({ onMouseDown }) {
                 boxShadow: "0 0 2em 0 rgba(245, 235, 132, 0.75)",
             }}
         >
-            <div className="contact-display">
-                <ul>
+            <div className="w-4/5 h-auto flex items-center self-center">
+                <ul className="w-full flex flex-row justify-around">
                     <li>
-                        <div style={{
-                            alignContent: "center",
-                            alignItems: "center",
-                            justifyContent: "center",
-                            textAlign: "center"
-                        }}
+                        <div
                             onClick={() => window.open(LINKEDIN_WEBSITE)}
                             onMouseEnter={() => { setIsLinkedinPlayed(true); setIsHovered(true) }}
                             onMouseLeave={() => { setIsLinkedinPlayed(false); setIsHovered(false) }}
-
                         >
                             <Lottie
                                 style={{
@@ -80,17 +74,10 @@ export default function Contact({ onMouseDown }) {
 
                     </li>
                     <li>
-                        <div style={{
-                            alignContent: "center",
-                            alignItems: "center",
-                            justifyContent: "center",
-                            textAlign: "center"
-                        }}
+                        <div
                             onClick={() => window.open(GITHUB_WEBSITE)}
                             onMouseEnter={() => { setIsGitHubPlayed(true); setIsHovered(true) }}
                             onMouseLeave={() => { setIsGitHubPlayed(false); setIsHovered(false) }}
-
-
                         >
                             <Lottie
                                 style={{
@@ -108,13 +95,7 @@ export default function Contact({ onMouseDown }) {
                     </li>
                     <li>
 
-                        <div style={{
-                            alignContent: "center",
-                            alignItems: "center",
-                            justifyContent: "center",
-                            textAlign: "center"
-                        }
-                        }
+                        <div
                             onMouseEnter={() => { setIsMailPlayed(true); setIsHovered(true) }}
                             onMouseLeave={() => { setIsMailPlayed(false); setIsHovered(false) }}
                         >

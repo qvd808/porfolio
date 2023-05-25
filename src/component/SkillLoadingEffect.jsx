@@ -24,7 +24,7 @@ export default function SkillLoadingEffect({ onMouseDown }) {
 
   return (
     <motion.div
-      className="w-4/5 h-96 bg-indigo-800 flex flex-col justify-evenly"
+      className="w-4/5 h-96 bg-indigo-800 flex flex-col justify-evenly md:h-96 "
       key="info"
       variants={animationEffect}
       initial="initial"
