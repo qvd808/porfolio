@@ -33,7 +33,7 @@ export default function Contact({ onMouseDown }) {
 
     return (
         <motion.div
-            className="w-4/5 h-96 bg-red-700 flex flex-col justify-evenly md:h-96"
+            className="w-4/5 h-96 bg-red-700 flex flex-col justify-evenly my-4 rounded-xl"
             key="info"
             variants={animationEffect}
             initial="initial"
