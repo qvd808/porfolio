@@ -47,10 +47,6 @@ export default function SkillLoadingEffect({ onMouseDown }) {
 
             <div className="text-center sharetech text-lg text-lightBlue"
               key={`title${idx}`}
-              style={{
-                // color: "red"
-                // color: "rgb(69, 10, 10, 1)"
-              }}
             >
               {skill}
             </div>
@@ -67,7 +63,7 @@ export default function SkillLoadingEffect({ onMouseDown }) {
                 width: "100%",
                 transition: {
                   duration: 1,
-                  delay: 1.2 + idx/10,
+                  delay: 0.8 + idx/10,
                 }
               }}
 
