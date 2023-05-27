@@ -25,7 +25,7 @@ export default function Projects() {
 
   return (
     <motion.div
-      className="about"
+      className="flex flex-col min-h-screen bg-gray-900 text-white"
       initial={{
         x: "-100vw",
       }}
@@ -40,11 +40,17 @@ export default function Projects() {
         duration: 1,
       }}
     >
-      <div className="about-title">
+      <div className="text-4xl mx-auto p-4">
         <h1>Projects</h1>
       </div>
-      <div className="project-content">
+      <div className="grid grid-cols-3">
         {projects.map((res, idx) => (
+          <ProjectContent key={idx} name={res.name} />
+        ))}
+                {projects.map((res, idx) => (
+          <ProjectContent key={idx} name={res.name} />
+        ))}
+                {projects.map((res, idx) => (
           <ProjectContent key={idx} name={res.name} />
         ))}
       </div>

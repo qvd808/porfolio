@@ -44,7 +44,7 @@ export default function ProjectContent({ name }) {
 
   return (
     <motion.div
-      className="project-card"
+      className="flex-1 rounded-xl bg-emerald_800 m-8 text-center text-lightBlue"
       whileHover={{
         scale: 1.1,
         cursor: "pointer",
@@ -53,18 +53,21 @@ export default function ProjectContent({ name }) {
       onMouseEnter={()=>setIsHovered(true)}
       onClick={()=>{window.open(`https://github.com/qvd808/${ProjectName}`, "_blank")}}
     >
-      <div className="project-title">
+      <div className="text-2xl text-lime-200">
         <TextEffect text={sentence} isHovered={isHovered} setIsHovered={setIsHovered}/>
       </div>
-      <motion.div className="project-card-content"
+      <motion.div className="flex flex-col items-center text-center p-2 text-xl"
         variants={container}
         initial="hidden"
         animate="visible"
       >
-        <img style={{
+        <img 
+        className="my-5"
+        style={{
           width: "90%",
           height: "100%",
           objectFit: "cover"
+          
         }}
         src={gifLink} alt="Hello"/>       
         {projectData}
@@ -72,5 +75,6 @@ export default function ProjectContent({ name }) {
       </motion.div>
 
     </motion.div>
+
   );
 }
