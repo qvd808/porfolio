@@ -47,12 +47,6 @@ export default function Projects() {
         {projects.map((res, idx) => (
           <ProjectContent key={idx} name={res.name} />
         ))}
-                {projects.map((res, idx) => (
-          <ProjectContent key={idx} name={res.name} />
-        ))}
-                {projects.map((res, idx) => (
-          <ProjectContent key={idx} name={res.name} />
-        ))}
       </div>
     </motion.div>
   );
