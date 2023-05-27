@@ -7,7 +7,10 @@ export default function SkillLoadingEffect({ onMouseDown }) {
 
   const [animationComplete, setAnimationComplete] = useState(false);
 
-  const skills = ["Python", "JavaScript", "React", "React Native"]
+  const skills = [
+    "Python", "JavaScript", "React", "React Native", "C++" , "HTML/CSS",
+    "Rust",
+  ]
 
   const animationEffect = {
     initial: { opacity: 0, y: "30em" },
@@ -24,7 +27,7 @@ export default function SkillLoadingEffect({ onMouseDown }) {
 
   return (
     <motion.div
-      className="w-4/5 h-96 bg-indigo-800 flex flex-col justify-evenly md:h-96 "
+      className="w-4/5 h-4/5 bg-indigo-800 flex flex-col justify-evenly"
       key="info"
       variants={animationEffect}
       initial="initial"
