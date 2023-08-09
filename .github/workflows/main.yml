@@ -26,6 +26,9 @@ jobs:
 
       - name: Setup Node
         uses: actions/setup-node@v3
+      
+      - name: Install Dependencies
+        uses: bahmutov/npm-install@v1
 
       - name: Build the artifact
         run: npm run build
