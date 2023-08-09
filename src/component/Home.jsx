@@ -4,6 +4,7 @@ import AboutMe from "./pages/AboutMe";
 import NavBar from "./NavBar";
 import Projects from "./pages/Projects";
 import MainPage from "./pages/MainPage";
+import { domain } from "../../domain";
 
 export default function Home() {
 
@@ -16,8 +17,8 @@ export default function Home() {
       {/* <div className="flex flex-col items-center min-h-screen bg-gray-900 text-white"> */}
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>
-          <Route exact path="/qvd-portfolio" element={<AboutMe />} />
-          <Route exact path="/qvd-portfolio/projects" element={<Projects />} />
+          <Route exact path={`/${domain}`} element={<AboutMe />} />
+          <Route exact path={`/${domain}/projects`} element={<Projects />} />
         </Routes>
       </AnimatePresence>
       {/* </div> */}
