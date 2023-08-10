@@ -17,7 +17,7 @@ export default function SkillLoadingEffect({ onMouseDown }) {
     animate: {
       opacity: 1, y: 0, transition: {
         type: "spring",
-        duration: 1,
+        duration: 1.5,
       }
     },
     exit: {

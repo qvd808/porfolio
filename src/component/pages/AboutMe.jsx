@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import SkillLoadingEffect from "../SkillLoadingEffect";
 import Introduction from "../Introduction";
 import Contact from "../Contact";
-
+import Character from "../Character";
 
 export default function AboutMe() {
 
@@ -12,6 +12,7 @@ export default function AboutMe() {
   const [isSkillDisplayed, setIsSkillDisplayed] = useState(false);
   const [isIntroductionDisplayed, setIsIntroductionDisplayed] = useState(false);
   const [isContactDisplayed, setIsContactDisplayed] = useState(false);
+  const [isCharacterDisplayed, setIsCharacterDisplayed] = useState(true);
 
   const parentVariants = {
     initial: {},
@@ -79,6 +80,7 @@ export default function AboutMe() {
               onMouseDown={() => {
                 setIsMouseDown(true)
                 setIsIntroductionDisplayed(true)
+
               }}
               whileHover={{
                 cursor: "pointer",
@@ -95,6 +97,7 @@ export default function AboutMe() {
               onMouseDown={() => {
                 setIsMouseDown(true)
                 setIsContactDisplayed(true)
+
               }}
               whileHover={{
                 cursor: "pointer",
@@ -108,6 +111,13 @@ export default function AboutMe() {
         )
         }
 
+        <div
+          className="w-[30vw] h-[30vh] my-20"
+        >
+          <Character />
+
+        </div>
+
         {isSkillDisplayed && (
           <SkillLoadingEffect key="display1" onMouseDown={() => {
             setIsMouseDown(false)
@@ -119,6 +129,7 @@ export default function AboutMe() {
           <Introduction key="display2" onMouseDown={() => {
             setIsMouseDown(false)
             setIsIntroductionDisplayed(false)
+
           }} />
         )}
 
@@ -126,10 +137,12 @@ export default function AboutMe() {
           <Contact key="display3" onMouseDown={() => {
             setIsMouseDown(false)
             setIsContactDisplayed(false)
+
           }} />
         )}
 
       </AnimatePresence>
+
 
 
     </motion.div>
