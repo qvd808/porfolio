@@ -1,8 +1,7 @@
-import { motion, useAnimation, AnimatePresence } from "framer-motion";
-import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
 import GlitchText from "./component/GlitchText";
 import Home from "./component/Home";
-import NavBar from "./component/NavBar";
 import './index.css'
 
 

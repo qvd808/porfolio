@@ -54,12 +54,12 @@ export default function AboutMe() {
       </div>
       <AnimatePresence>
         {!isMouseDown && (
-          <motion.div className="flex mx-auto py-4 space-x-10"
+          <motion.div className="flex mx-auto justify-center items-center w-full space-x-3.5 md:space-x-32"
             key="choice"
             variants={parentVariants} initial="initial" animate="animate" exit="exit"
           >
             <motion.div
-              className="w-24 h-24 rounded-full flex justify-center items-center bg-red-500 text-white text-xl md:w-40 md:h-40"
+              className="w-24 md:w-40 h-auto aspect-square p-1 justify-center items-center text-center rounded-full flex bg-red-500 text-white text-xl md:text-4xl"
               key="circle1"
               variants={childVariants}
               onMouseDown={() => {
@@ -75,7 +75,7 @@ export default function AboutMe() {
             </motion.div>
 
             <motion.div
-              className="w-{24} h-{24} rounded-full flex justify-center items-center bg-red-500 text-white text-xl md:w-40 md:h-40" variants={childVariants}
+              className="w-24 md:w-40 h-auto aspect-square p-1 justify-center items-center text-center rounded-full flex bg-red-500 text-white text-xl md:text-4xl" variants={childVariants}
               key="circle2"
               onMouseDown={() => {
                 setIsMouseDown(true)
@@ -92,7 +92,7 @@ export default function AboutMe() {
             </motion.div>
 
             <motion.div
-              className="w-{24} h-{24} rounded-full flex justify-center items-center bg-red-500 text-white text-xl md:w-40 md:h-40" variants={childVariants}
+              className="w-24 md:w-40 h-auto aspect-square p-1 justify-center items-center text-center rounded-full flex bg-red-500 text-white text-xl md:text-4xl" variants={childVariants}
               key="circle3"
               onMouseDown={() => {
                 setIsMouseDown(true)
@@ -111,12 +111,12 @@ export default function AboutMe() {
         )
         }
 
-        <div
+        {/* <div
           className="w-[30vw] h-[30vh] my-20"
         >
           <Character />
 
-        </div>
+        </div> */}
 
         {isSkillDisplayed && (
           <SkillLoadingEffect key="display1" onMouseDown={() => {
