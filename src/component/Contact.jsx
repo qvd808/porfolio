@@ -33,7 +33,7 @@ export default function Contact({ onMouseDown }) {
 
     return (
         <motion.div
-            className="w-4/5 h-96 bg-red-700 flex flex-col justify-evenly my-4 rounded-xl"
+            className="w-4/5 max-w-7xl h-96 bg-red-700 flex flex-col justify-evenly my-4 rounded-xl"
             key="info"
             variants={animationEffect}
             initial="initial"
@@ -49,14 +49,15 @@ export default function Contact({ onMouseDown }) {
                 boxShadow: "0 0 2em 0 rgba(245, 235, 132, 0.75)",
             }}
         >
-            <div className="w-4/5 h-auto flex items-center self-center">
-                <ul className="w-full flex flex-row justify-around">
+            <div className="w-4/5 h-full flex items-center self-center my-3.5">
+                <ul className="w-full h-full flex flex-col justify-between notPhone:flex-row notPhone:items-center notPhone:self-center">
                     <li>
                         <div
                             onClick={() => window.open(LINKEDIN_WEBSITE)}
                             onMouseEnter={() => { setIsLinkedinPlayed(true); setIsHovered(true) }}
                             onMouseLeave={() => { setIsLinkedinPlayed(false); setIsHovered(false) }}
-                        >
+                            className="flex w-3/4 flex-nowrap flex-row items-center justify-around notPhone:flex-col"
+                >
                             <Lottie
                                 style={{
                                     width: "5em",
@@ -67,7 +68,7 @@ export default function Contact({ onMouseDown }) {
                                 autoplay
                                 loop={isLinkedinPlayed}
                             />
-                            <p>
+                            <p className="text-lg">
                                 LinkedIn
                             </p>
                         </div>
@@ -78,18 +79,21 @@ export default function Contact({ onMouseDown }) {
                             onClick={() => window.open(GITHUB_WEBSITE)}
                             onMouseEnter={() => { setIsGitHubPlayed(true); setIsHovered(true) }}
                             onMouseLeave={() => { setIsGitHubPlayed(false); setIsHovered(false) }}
+                            className="relative right-3 flex w-3/4 flex-nowrap flex-row items-center justify-around notPhone:flex-col notPhone:right-0"
                         >
                             <Lottie
                                 style={{
-                                    width: "5em",
-                                    height: "5em"
+                                    width: "6em",
+                                    height: "6em"
                                 }}
                                 className="animation-contact"
                                 animationData={GitHub}
                                 autoplay
                                 loop={isGitHubPlayed}
                             />
-                            <p>Git Hub</p>
+                            <p
+                            className="text-lg"
+                            >Git Hub</p>
                         </div>
 
                     </li>
@@ -98,6 +102,7 @@ export default function Contact({ onMouseDown }) {
                         <div
                             onMouseEnter={() => { setIsMailPlayed(true); setIsHovered(true) }}
                             onMouseLeave={() => { setIsMailPlayed(false); setIsHovered(false) }}
+                            className="relative right-2 flex w-3/4 flex-nowrap flex-row items-center justify-around notPhone:flex-col notPhone:right-0"
                         >
                             <Lottie
                                 style={{
@@ -110,7 +115,10 @@ export default function Contact({ onMouseDown }) {
                                 autoplay
                                 loop={isMailPlayed}
                             />
-                            <p>
+                            <p 
+                            className="text-lg"
+                            
+                            >
                                 <a style={{
                                     textDecoration: "None",
                                     color: "inherit"

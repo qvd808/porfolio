@@ -6,6 +6,10 @@ module.exports = {
       colors: {
         lightBlue: "#DDDDDD",
         emerald_800: "#036C4F"
+      },
+      screens: {
+        notPhone: "550px",
+
       }
     },
   },
