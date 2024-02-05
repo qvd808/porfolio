@@ -708,12 +708,53 @@ video {
   width: 100%;
 }
 
+.w-\[minmax\(\)\] {
+  width: minmax();
+}
+
+.w-\[minmax\(24\.\)\] {
+  width: minmax(24.);
+}
+
+.w-\[minmax\(24\.30\)\] {
+  width: minmax(24.30);
+}
+
+.w-\[minmax\(24\.36\)\] {
+  width: minmax(24.36);
+}
+
+.w-2 {
+  width: 0.5rem;
+}
+
+.w-28 {
+  width: 7rem;
+}
+
+.w-max {
+  width: -moz-max-content;
+  width: max-content;
+}
+
 .max-w-2xl {
   max-width: 42rem;
 }
 
 .max-w-7xl {
   max-width: 80rem;
+}
+
+.max-w-5xl {
+  max-width: 64rem;
+}
+
+.max-w-xl {
+  max-width: 36rem;
+}
+
+.max-w-sm {
+  max-width: 24rem;
 }
 
 .flex-1 {
@@ -730,6 +771,10 @@ video {
 
 .grid-cols-\[30\%_50\%_15\%\] {
   grid-template-columns: 30% 50% 15%;
+}
+
+.grid-cols-1 {
+  grid-template-columns: repeat(1, minmax(0, 1fr));
 }
 
 .flex-row {
@@ -892,6 +937,11 @@ video {
   line-height: 1.75rem;
 }
 
+.text-6xl {
+  font-size: 3.75rem;
+  line-height: 1;
+}
+
 .font-medium {
   font-weight: 500;
 }
@@ -979,6 +1029,14 @@ body {
     right: 0px;
   }
 
+  .notPhone\:w-40 {
+    width: 10rem;
+  }
+
+  .notPhone\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
   .notPhone\:flex-row {
     flex-direction: row;
   }
@@ -994,6 +1052,26 @@ body {
   .notPhone\:self-center {
     align-self: center;
   }
+
+  .notPhone\:text-2xl {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+
+  .notPhone\:text-xl {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+
+  .notPhone\:text-8xl {
+    font-size: 6rem;
+    line-height: 1;
+  }
+
+  .notPhone\:text-4xl {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
 }
 
 @media (min-width: 768px) {
@@ -1005,16 +1083,16 @@ body {
     width: 15rem;
   }
 
-  .md\:w-64 {
-    width: 16rem;
-  }
-
   .md\:w-8\/12 {
     width: 66.666667%;
   }
 
   .md\:grid-cols-\[20\%_70\%_10\%\] {
     grid-template-columns: 20% 70% 10%;
+  }
+
+  .md\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .md\:space-x-44 > :not([hidden]) ~ :not([hidden]) {
@@ -1040,8 +1118,8 @@ body {
 }
 
 @media (min-width: 1024px) {
-  .lg\:w-64 {
-    width: 16rem;
+  .lg\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .lg\:flex-wrap {

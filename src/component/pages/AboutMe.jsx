@@ -7,7 +7,6 @@ import Contact from "../Contact";
 import Character from "../Character";
 
 export default function AboutMe() {
-
   const [isMouseDown, setIsMouseDown] = useState(false);
   const [isSkillDisplayed, setIsSkillDisplayed] = useState(false);
   const [isIntroductionDisplayed, setIsIntroductionDisplayed] = useState(false);
@@ -16,20 +15,23 @@ export default function AboutMe() {
 
   const parentVariants = {
     initial: {},
-    animate: { transition: { staggerChildren: 0.3, delayChildren: 0.8 }, },
-    exit: { transition: { staggerChildren: 0.1 }, }
+    animate: { transition: { staggerChildren: 0.3, delayChildren: 0.8 } },
+    exit: { transition: { staggerChildren: 0.1 } },
   };
 
   const childVariants = {
     initial: { opacity: 0, y: 50 },
     animate: {
-      opacity: 1, y: 0, transition: {
+      opacity: 1,
+      y: 0,
+      transition: {
         type: "spring",
-      }
+      },
     },
     exit: {
-      opacity: 0, y: 50
-    }
+      opacity: 0,
+      y: 50,
+    },
   };
 
   return (
@@ -48,23 +50,26 @@ export default function AboutMe() {
         duration: 1,
       }}
     >
-
       <div className="text-4xl mx-auto p-4">
-        <h1>Hello, There!!!</h1>
+        <h1>👋 Hello, There!!!</h1>
       </div>
       <AnimatePresence>
         {!isMouseDown && (
-          <motion.div className="flex mx-auto justify-around items-center w-full max-w-2xl"
+          <motion.div
+            className="flex mx-auto py-5 justify-around items-center w-full max-w-2xl"
             key="choice"
-            variants={parentVariants} initial="initial" animate="animate" exit="exit"
+            variants={parentVariants}
+            initial="initial"
+            animate="animate"
+            exit="exit"
           >
             <motion.div
-              className="w-24 md:w-40 h-auto aspect-square p-1 justify-center items-center text-center rounded-full flex bg-red-500 text-white text-xl md:text-4xl"
+              className="w-24 notPhone:w-40 h-auto aspect-square p-1 justify-center items-center text-center rounded-full flex bg-red-500 text-white text-xl notPhone:text-4xl"
               key="circle1"
               variants={childVariants}
               onMouseDown={() => {
-                setIsMouseDown(true)
-                setIsSkillDisplayed(true)
+                setIsMouseDown(true);
+                setIsSkillDisplayed(true);
               }}
               whileHover={{
                 cursor: "pointer",
@@ -75,12 +80,12 @@ export default function AboutMe() {
             </motion.div>
 
             <motion.div
-              className="w-24 md:w-40 h-auto aspect-square p-1 justify-center items-center text-center rounded-full flex bg-red-500 text-white text-xl md:text-4xl" variants={childVariants}
+              className="w-24 notPhone:w-40 h-auto aspect-square p-1 justify-center items-center text-center rounded-full flex bg-red-500 text-white text-xl notPhone:text-4xl"
+              variants={childVariants}
               key="circle2"
               onMouseDown={() => {
-                setIsMouseDown(true)
-                setIsIntroductionDisplayed(true)
-
+                setIsMouseDown(true);
+                setIsIntroductionDisplayed(true);
               }}
               whileHover={{
                 cursor: "pointer",
@@ -88,16 +93,15 @@ export default function AboutMe() {
               }}
             >
               About Me
-
             </motion.div>
 
             <motion.div
-              className="w-24 md:w-40 h-auto aspect-square p-1 justify-center items-center text-center rounded-full flex bg-red-500 text-white text-xl md:text-4xl" variants={childVariants}
+              className="w-24 notPhone:w-40 h-auto aspect-square p-1 justify-center items-center text-center rounded-full flex bg-red-500 text-white text-xl notPhone:text-4xl"
+              variants={childVariants}
               key="circle3"
               onMouseDown={() => {
-                setIsMouseDown(true)
-                setIsContactDisplayed(true)
-
+                setIsMouseDown(true);
+                setIsContactDisplayed(true);
               }}
               whileHover={{
                 cursor: "pointer",
@@ -106,45 +110,66 @@ export default function AboutMe() {
             >
               Contact
             </motion.div>
-
           </motion.div>
-        )
-        }
+        )}
 
-        {/* <div
-          className="w-[30vw] h-[30vh] my-20"
-        >
-          <Character />
-
-        </div> */}
+        {!isContactDisplayed &&
+          !isSkillDisplayed &&
+          !isIntroductionDisplayed && (
+            <motion.div
+              key="robot"
+              className="flex justify-center"
+              initial={{
+                opacity: 0,
+                y: "30vh",
+              }}
+              animate={{
+                opacity: 1,
+                y: 0,
+                transition: {
+                  type: "spring",
+                  duration: 2.5,
+                },
+              }}
+              exit={{
+                opacity: 0,
+                y: "5vh",
+              }}
+            >
+              <Character />
+            </motion.div>
+          )}
 
         {isSkillDisplayed && (
-          <SkillLoadingEffect key="display1" onMouseDown={() => {
-            setIsMouseDown(false)
-            setIsSkillDisplayed(false)
-          }} />
+          <SkillLoadingEffect
+            key="display1"
+            onMouseDown={() => {
+              setIsMouseDown(false);
+              setIsSkillDisplayed(false);
+            }}
+          />
         )}
 
         {isIntroductionDisplayed && (
-          <Introduction key="display2" onMouseDown={() => {
-            setIsMouseDown(false)
-            setIsIntroductionDisplayed(false)
-
-          }} />
+          <Introduction
+            key="display2"
+            onMouseDown={() => {
+              setIsMouseDown(false);
+              setIsIntroductionDisplayed(false);
+            }}
+          />
         )}
 
         {isContactDisplayed && (
-          <Contact key="display3" onMouseDown={() => {
-            setIsMouseDown(false)
-            setIsContactDisplayed(false)
-
-          }} />
+          <Contact
+            key="display3"
+            onMouseDown={() => {
+              setIsMouseDown(false);
+              setIsContactDisplayed(false);
+            }}
+          />
         )}
-
       </AnimatePresence>
-
-
-
     </motion.div>
   );
 }
