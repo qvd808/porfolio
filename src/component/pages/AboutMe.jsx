@@ -116,22 +116,28 @@ export default function AboutMe() {
         {!isContactDisplayed &&
           !isSkillDisplayed &&
           !isIntroductionDisplayed && (
-            <Character
+            <motion.div
               key="robot"
-              variants={childVariants}
+              className="flex justify-center"
               initial={{
                 opacity: 0,
-                y: 50,
+                y: "30vh",
               }}
               animate={{
                 opacity: 1,
                 y: 0,
+                transition: {
+                  type: "spring",
+                  duration: 2.5,
+                },
               }}
               exit={{
                 opacity: 0,
-                y: 50,
+                y: "5vh",
               }}
-            />
+            >
+              <Character />
+            </motion.div>
           )}
 
         {isSkillDisplayed && (

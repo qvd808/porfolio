@@ -21,10 +21,12 @@ const animationEffect = {
 export default function Character() {
   return (
     <div>
-     <Lottie 
-    autoplay
-    loop={false}
-     animationData={Robot} />
+      <Lottie
+        className="max-w-xl"
+        autoplay
+        loop={false}
+        animationData={Robot}
+      />
     </div>
   );
 }
