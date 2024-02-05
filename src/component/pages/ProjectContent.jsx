@@ -53,10 +53,10 @@ export default function ProjectContent({ name }) {
       onMouseEnter={()=>setIsHovered(true)}
       onClick={()=>{window.open(`https://github.com/qvd808/${ProjectName}`, "_blank")}}
     >
-      <div className="text-2xl text-lime-200">
+      <div className="text-xl text-lime-200 notPhone:text-2xl">
         <TextEffect text={sentence} isHovered={isHovered} setIsHovered={setIsHovered}/>
       </div>
-      <motion.div className="flex flex-col items-center text-center p-2 text-xl"
+      <motion.div className="flex flex-col items-center text-center p-2 text-lg notPhone:text-xl"
         variants={container}
         initial="hidden"
         animate="visible"
