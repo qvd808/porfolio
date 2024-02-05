@@ -82,7 +82,7 @@ function GlitchText({setIsPlaying}) {
     <AnimatePresence>
       <motion.div className="h-screen bg-[#222] grid place-items-center justify-center items-center">
         <motion.div
-          className="text-8xl uppercase text-white absolute"
+          className="text-6xl uppercase text-white absolute notPhone:text-8xl"
           variants={glitch}
           animate="textEffect"
           transition={{
@@ -96,7 +96,7 @@ function GlitchText({setIsPlaying}) {
           {text[index]}
         </motion.div>
         <motion.div
-          className="text-8xl uppercase text-white absolute"
+          className="text-6xl uppercase text-white absolute notPhone:text-8xl"
           style={{
             position: "absolute",
             clipPath: "polygon(0 0, 100% 0, 100% 45%, 0 45%)",
@@ -114,7 +114,7 @@ function GlitchText({setIsPlaying}) {
           {text[index]}
         </motion.div>
         <motion.div
-          className="text-8xl uppercase text-white absolute"
+          className="text-6xl uppercase text-white absolute notPhone:text-8xl"
           style={{
             position: "absolute",
             clipPath: "polygon(0 80%, 100% 20%, 100% 100%, 0 100%)",

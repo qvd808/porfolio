@@ -708,6 +708,30 @@ video {
   width: 100%;
 }
 
+.w-\[minmax\(\)\] {
+  width: minmax();
+}
+
+.w-\[minmax\(24\.\)\] {
+  width: minmax(24.);
+}
+
+.w-\[minmax\(24\.30\)\] {
+  width: minmax(24.30);
+}
+
+.w-\[minmax\(24\.36\)\] {
+  width: minmax(24.36);
+}
+
+.w-2 {
+  width: 0.5rem;
+}
+
+.w-28 {
+  width: 7rem;
+}
+
 .max-w-2xl {
   max-width: 42rem;
 }
@@ -896,6 +920,11 @@ video {
   line-height: 1.75rem;
 }
 
+.text-6xl {
+  font-size: 3.75rem;
+  line-height: 1;
+}
+
 .font-medium {
   font-weight: 500;
 }
@@ -983,6 +1012,10 @@ body {
     right: 0px;
   }
 
+  .notPhone\:w-40 {
+    width: 10rem;
+  }
+
   .notPhone\:grid-cols-3 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
@@ -1011,6 +1044,16 @@ body {
   .notPhone\:text-xl {
     font-size: 1.25rem;
     line-height: 1.75rem;
+  }
+
+  .notPhone\:text-8xl {
+    font-size: 6rem;
+    line-height: 1;
+  }
+
+  .notPhone\:text-4xl {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
   }
 }
 

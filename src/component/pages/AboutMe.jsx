@@ -54,12 +54,12 @@ export default function AboutMe() {
       </div>
       <AnimatePresence>
         {!isMouseDown && (
-          <motion.div className="flex mx-auto justify-around items-center w-full max-w-2xl"
+          <motion.div className="flex mx-auto py-5 justify-around items-center w-full max-w-2xl"
             key="choice"
             variants={parentVariants} initial="initial" animate="animate" exit="exit"
           >
             <motion.div
-              className="w-24 md:w-40 h-auto aspect-square p-1 justify-center items-center text-center rounded-full flex bg-red-500 text-white text-xl md:text-4xl"
+              className="w-24 notPhone:w-40 h-auto aspect-square p-1 justify-center items-center text-center rounded-full flex bg-red-500 text-white text-xl notPhone:text-4xl"
               key="circle1"
               variants={childVariants}
               onMouseDown={() => {
@@ -75,7 +75,7 @@ export default function AboutMe() {
             </motion.div>
 
             <motion.div
-              className="w-24 md:w-40 h-auto aspect-square p-1 justify-center items-center text-center rounded-full flex bg-red-500 text-white text-xl md:text-4xl" variants={childVariants}
+              className="w-24 notPhone:w-40 h-auto aspect-square p-1 justify-center items-center text-center rounded-full flex bg-red-500 text-white text-xl notPhone:text-4xl" variants={childVariants}
               key="circle2"
               onMouseDown={() => {
                 setIsMouseDown(true)
@@ -92,7 +92,7 @@ export default function AboutMe() {
             </motion.div>
 
             <motion.div
-              className="w-24 md:w-40 h-auto aspect-square p-1 justify-center items-center text-center rounded-full flex bg-red-500 text-white text-xl md:text-4xl" variants={childVariants}
+              className="w-24 notPhone:w-40 h-auto aspect-square p-1 justify-center items-center text-center rounded-full flex bg-red-500 text-white text-xl notPhone:text-4xl" variants={childVariants}
               key="circle3"
               onMouseDown={() => {
                 setIsMouseDown(true)
