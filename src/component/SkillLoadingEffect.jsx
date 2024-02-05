@@ -8,8 +8,7 @@ export default function SkillLoadingEffect({ onMouseDown }) {
   const [animationComplete, setAnimationComplete] = useState(false);
 
   const skills = [
-    "Python", "JavaScript", "React", "React Native", "C++" , "HTML/CSS",
-    "Rust",
+    "Python🐍", "JavaScript", "React", "C++", "Java", "Rust🦀", "TailwindCss"
   ]
 
   const animationEffect = {
@@ -27,7 +26,7 @@ export default function SkillLoadingEffect({ onMouseDown }) {
 
   return (
     <motion.div
-      className="w-4/5 h-4/5 bg-indigo-800 flex flex-col justify-evenly my-4 rounded-xl"
+      className="w-5/6 h-4/5 bg-indigo-800 flex flex-col justify-evenly my-4 rounded-xl"
       key="info"
       variants={animationEffect}
       initial="initial"
@@ -41,14 +40,14 @@ export default function SkillLoadingEffect({ onMouseDown }) {
     >
       {
         skills.map((skill, idx) => (
-          <div className="grid grid-cols-[1fr_5fr_1fr] items-center"
+          <div className="grid grid-cols-[30%_50%_15%] py-5 md:grid-cols-[20%_70%_10%]"
             key={`info-display${idx}`}
             style={{
               height: "5em"
             }}
           >
 
-            <div className="text-center sharetech text-lg text-lightBlue"
+            <div className="text-center sharetech text-base text-lightBlue md:text-xl"
               key={`title${idx}`}
             >
               {skill}
@@ -77,7 +76,7 @@ export default function SkillLoadingEffect({ onMouseDown }) {
               animationComplete && (
                 <Lottie
                   key={`Lottie${idx}`}
-                  className="w-16 h-auto mx-auto"
+                  className="w-16 relative bottom-4 left-2"
                   animationData={Complete}
                   autoplay
                   loop={false}
