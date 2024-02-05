@@ -54,7 +54,7 @@ export default function AboutMe() {
       </div>
       <AnimatePresence>
         {!isMouseDown && (
-          <motion.div className="flex mx-auto justify-center items-center w-full space-x-3.5 md:space-x-32"
+          <motion.div className="flex mx-auto justify-around items-center w-full max-w-2xl"
             key="choice"
             variants={parentVariants} initial="initial" animate="animate" exit="exit"
           >
