@@ -11,7 +11,7 @@ export default function AboutMe() {
   const [isSkillDisplayed, setIsSkillDisplayed] = useState(false);
   const [isIntroductionDisplayed, setIsIntroductionDisplayed] = useState(false);
   const [isContactDisplayed, setIsContactDisplayed] = useState(false);
-  const [isCharacterDisplayed, setIsCharacterDisplayed] = useState(true);
+  const [botMessage, setBotMessage] = useState("Hello, there! ٩(^ᗜ^ )و ´-");
 
   const parentVariants = {
     initial: {},
@@ -118,7 +118,7 @@ export default function AboutMe() {
           !isIntroductionDisplayed && (
             <motion.div
               key="robot"
-              className="flex justify-center"
+              className="relative flex justify-center flex-col items-center w-full max-w-2xl mx-auto p-4"
               initial={{
                 opacity: 0,
                 y: "30vh",
@@ -136,6 +136,9 @@ export default function AboutMe() {
                 y: "5vh",
               }}
             >
+              <div className="relative top-16 p-3 bg-stone-100 w-full h-44 clip-message text-black">
+                {botMessage}
+              </div>
               <Character />
             </motion.div>
           )}
