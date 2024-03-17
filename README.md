@@ -1,5 +1,4 @@
-# Name of Project
-
+# Personal website
 ## Table of Contents
 
 - [Overview](#overview)
