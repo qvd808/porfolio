@@ -40,7 +40,8 @@ export default function AboutMe() {
     },
   };
 
-  const getResponse = async () => {
+  const getResponse = async (e) => {
+	e.preventDefault()
     setBotMessage("");
 
     const response = await fetch(`${chatBotAPI}/ask`, {
@@ -185,20 +186,20 @@ export default function AboutMe() {
               </div>
               <div className="mx-5">
                 <Character />
-                <div class="grid grid-cols-[90%_10%] mx-3 my-12">
+                <form className="grid grid-cols-[90%_10%] mx-3 my-12">
                   <input
-                    class="shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    className="shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                     id="chatbox"
                     type="text"
                     placeholder="Ask me about Vinh!!"
                   ></input>
-                  <button className="bg-white rounded-md" onClick={getResponse}>
+                  <button className="bg-white rounded-md" type = "submit" onClick={(e) => getResponse(e)}>
                     <img
                       className="w-auto h-auto object-contain"
                       src="./send.svg"
                     />
                   </button>
-                </div>
+                </form>
               </div>
             </motion.div>
           )}
