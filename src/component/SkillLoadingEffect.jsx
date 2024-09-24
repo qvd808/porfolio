@@ -26,67 +26,26 @@ export default function SkillLoadingEffect({ onMouseDown }) {
 
   return (
     <motion.div
-      className="w-5/6 h-4/5 bg-indigo-800 flex flex-col justify-evenly my-4 rounded-xl"
+      className="w-full h-full flex flex-col justify-center items-center my-4"
       key="info"
       variants={animationEffect}
       initial="initial"
       animate="animate"
       exit="exit"
       onMouseDown={onMouseDown}
-      whileHover={{
-        cursor: "pointer",
-        boxShadow: "0 0 2em 0 rgba(245, 235, 132, 0.75)",
-      }}
+      // whileHover={{
+      //   cursor: "pointer",
+      //   boxShadow: "0 0 2em 0 rgba(245, 235, 132, 0.75)",
+      // }}
     >
-      {
-        skills.map((skill, idx) => (
-          <div className="grid grid-cols-[30%_50%_15%] py-5 md:grid-cols-[20%_70%_10%]"
-            key={`info-display${idx}`}
-            style={{
-              height: "5em"
-            }}
-          >
-
-            <div className="text-center sharetech text-base text-lightBlue md:text-xl"
-              key={`title${idx}`}
-            >
-              {skill}
-            </div>
-
-            <motion.div
-              className="bg-emerald-600"
-              key={`framer${idx}`}
-
-              initial={{
-                width: 0,
-                height: "1.5em",
-              }}
-              animate={{
-                width: "100%",
-                transition: {
-                  duration: 1,
-                  delay: 0.8 + idx/10,
-                }
-              }}
-
-              onAnimationComplete={() => setAnimationComplete(true)}
-            />
-
-            {
-              animationComplete && (
-                <Lottie
-                  key={`Lottie${idx}`}
-                  className="w-16 relative bottom-4 left-2"
-                  animationData={Complete}
-                  autoplay
-                  loop={false}
-                />
-              )
-            }
-
-          </div>
-        ))
-      }
+		<div className="absolute top-[30%] w-[50%] h-auto aspect-square rounded-full bg-red-500">
+		</div>
+		<div className="absolute top-[30%] w-[50%] h-auto aspect-square rounded-full bg-blue-100 pizza1">
+		</div>
+		<div className="absolute top-[30%] w-[50%] h-auto aspect-square rounded-full bg-green-100 pizza1 transform -rotate-90">
+		</div>
+		<div className="absolute top-[30%] w-[50%] h-auto aspect-square rounded-full bg-yellow-100 pizza1 transform -rotate-180">
+		</div>
     </motion.div>
   )
 
