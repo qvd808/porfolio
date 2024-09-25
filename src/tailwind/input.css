@@ -7,8 +7,7 @@
 
 @layer utilities {
     .clip-message {
-
-        clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 56% 76%, 55% 100%, 34% 75%, 0% 75%);  
+        clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 56% 76%, 55% 100%, 34% 75%, 0% 75%); 
     }
 }
 
@@ -27,7 +26,7 @@ body {
 }
 
 @layer utilities {
-   .pizza1 {
+   .clip-sector {
        clip-path: polygon(50% 50%, 0% 100%, 100% 100%);
    }
 
