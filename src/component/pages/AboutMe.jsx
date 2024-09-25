@@ -1,5 +1,5 @@
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { useState } from "react";
 import { chatBotAPI } from "../../api/api";
 import SkillLoadingEffect from "../SkillLoadingEffect";
 import Introduction from "../Introduction";
@@ -15,9 +15,6 @@ export default function AboutMe() {
   const [isIntroductionDisplayed, setIsIntroductionDisplayed] = useState(false);
   const [isContactDisplayed, setIsContactDisplayed] = useState(false);
   const [botMessage, setBotMessage] = useState("Hello there! ٩(^ᗜ^ )و My name is Botley. I am a chatbot created by Vinh. You can ask me anything about Vinh, his skills, and his experience. I will try my best to answer your questions. (´･ω･`)");
-  // const [botMessage, setBotMessage] = useState(
-  //   "My creator is Dang Quang Vinh. He is a skilled software engineer with experience in various technologies such as React, NextJs, NodeJs, Express, AWS, Java, C, bash, Python, Pytorch, and more. He has worked on projects such as VIRENTO, an online renting platform, and Forget Me Not, a mobile application for caregivers and dementia patients. He has also worked on personal projects like writing an operating system from scratch and creating a Flappy Bird bot. He has experience as an IT Associate/Junior Software Engineer at Atimi Software, where he utilized technologies like React Native, Python, Power Automate, Firebase, and more."
-  // );
 
   const parentVariants = {
     initial: {},
