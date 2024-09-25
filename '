@@ -12,7 +12,6 @@ const [sectorAngle, setSectorAngle] = useState(0);
 	// "Python🐍", "JavaScript", "React", "C++", "Java", "Rust🦀", "TailwindCss"
  //  ]
 
-	const openingDuration = 1;
   const animationEffect = {
 	initial: {
 		opacity: 0,
@@ -24,12 +23,30 @@ const [sectorAngle, setSectorAngle] = useState(0);
 		transition: {
 			opacity: {type: "spring"},
 			type: "tween",
-			duration: openingDuration,
+			duration: 2,
+			delayChildren: 10,
+			// staggerChildren: 2
 	  }
 	},
 	exit: {
 	  opacity: 0, y: 50
 	}
+  }
+
+  const rotateEffect = {
+	initial: {
+		rotate: 0,
+	},
+	animate: {
+		rotate: sectorAngle,
+		transition: {
+			opacity: {type: "spring"},
+			type: "tween",
+			duration: 2,
+			delayChildren: 10,
+			// staggerChildren: 2
+	  }
+	},
   }
 
   return (
@@ -57,13 +74,10 @@ const [sectorAngle, setSectorAngle] = useState(0);
 		animate={{
 			rotate: sectorAngle + 270,
 		}}
-		  transition={{
-			rotate: {
-			  type: sectorAngle === 0 ? "tween" : "spring",
-			  ease: "linear",
-			  delay: sectorAngle === 0 ? openingDuration : 0
-			}
-		  }}
+		transition={{
+			type: sectorAngle === 0 ? "tween" : "spring",
+			ease: "linear"
+		}}
 		onAnimationComplete={() => {
 			if (180 === ((sectorAngle + 270)) % 360) {
 				onMouseDown();
@@ -78,13 +92,10 @@ const [sectorAngle, setSectorAngle] = useState(0);
 		animate={{
 			rotate: sectorAngle,
 		}}
-		  transition={{
-			rotate: {
-			  type: sectorAngle === 0 ? "tween" : "spring",
-			  ease: "linear",
-			  delay: sectorAngle === 0 ? openingDuration : 0
-			}
-		  }}
+		transition={{
+			type: sectorAngle === 0 ? "tween" : "spring",
+			ease: "linear"
+		}}
 		onClick={() => {
 			const adding = 180 - (sectorAngle % 360);
 			setSectorAngle(sectorAngle + adding)}
@@ -98,13 +109,10 @@ const [sectorAngle, setSectorAngle] = useState(0);
 		animate={{
 			rotate: (sectorAngle + 90),
 		}}
-		  transition={{
-			rotate: {
-			  type: sectorAngle === 0 ? "tween" : "spring",
-			  ease: "linear",
-			  delay: sectorAngle === 0 ? openingDuration : 0
-			}
-		  }}
+		transition={{
+			type: sectorAngle === 0 ? "tween" : "spring",
+			ease: "linear"
+		}}
 		onClick={() => {
 			const adding = 180 - ((sectorAngle + 90) % 360);
 			setSectorAngle(sectorAngle + adding)}
@@ -118,13 +126,10 @@ const [sectorAngle, setSectorAngle] = useState(0);
 		animate={{
 			rotate: (sectorAngle + 180),
 		}}
-		  transition={{
-			rotate: {
-			  type: sectorAngle === 0 ? "tween" : "spring",
-			  ease: "linear",
-			  delay: sectorAngle === 0 ? openingDuration : 0
-			}
-		  }}
+		transition={{
+			type: sectorAngle === 0 ? "tween" : "spring",
+			ease: "linear"
+		}}
 		onClick={() => {
 			const adding = 180 - ((sectorAngle + 180) % 360);
 			setSectorAngle(sectorAngle + adding)}
