@@ -1,17 +1,20 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
+import CircleConstellation from "./CircleSkill";
 
 export default function SkillLoadingEffect({ onMouseDown }) {
 	const [sectorAngle, setSectorAngle] = useState(0);
 	const [showContent, setShowContent] = useState(false);
+	const [circleSector, setCircleSector] = useState(4);
+
 	const openingDuration = 1;
 	const spinDuration = 0.5;
-	const sector_text = [
-		"Development Skill",
-		"Programming Language",
-		"Coming soon",
-		"Exit",
-	];
+	const sector_text = {
+		"Development Skill": [""],
+		"Programming Language": [""],
+		"Coming soon": [""],
+		Exit: [""],
+	};
 	const animationEffect = {
 		initial: { opacity: 0, y: "100vh" },
 		animate: {
@@ -30,14 +33,17 @@ export default function SkillLoadingEffect({ onMouseDown }) {
 		switch (sectorNumber) {
 			case 1:
 				setSectorAngle(270);
+				setCircleSector(1);
 				setShowContent(true);
 				break;
 			case 2:
 				setSectorAngle(180);
+				setCircleSector(2);
 				setShowContent(true);
 				break;
 			case 3:
 				setSectorAngle(90);
+				setCircleSector(3);
 				setShowContent(true);
 				break;
 			case 4:
@@ -64,73 +70,62 @@ export default function SkillLoadingEffect({ onMouseDown }) {
 				cursor: "pointer",
 			}}
 		>
-			<AnimatePresence>
-				<motion.div
-					className="w-64 h-64 rounded-full overflow-hidden"
-					animate={{
-						rotate: sectorAngle,
-						x: showContent ? "-30vw" : 0,
-					}}
-					transition={{
-						type: "spring",
-						stiffness: 260,
-						damping: 20,
-						duration: spinDuration,
-						x: {
-							duration: 1,
-						},
-					}}
-					onAnimationComplete={() => {
-						if (sectorAngle === 360) {
-							onMouseDown();
-						}
-					}}
-				>
-					<div className="relative w-full h-full">
-						{sectors.map((sector, index) => {
-							const rotation = index * sector.angle;
-							return (
+			<motion.div
+				className="w-64 h-auto aspect-square flex rounded-full overflow-hidden mx-4"
+				animate={{
+					rotate: sectorAngle,
+					x: showContent ? "-7vw" : 0,
+					// y: showContent ? "-45vh" : 0,
+				}}
+				transition={{
+					type: "spring",
+					stiffness: 260,
+					damping: 20,
+					duration: spinDuration,
+					x: {
+						duration: 1,
+					},
+				}}
+				onAnimationComplete={() => {
+					if (sectorAngle === 360) {
+						onMouseDown();
+					}
+				}}
+			>
+				<div className="relative w-full h-full">
+					{sectors.map((sector, index) => {
+						const rotation = index * sector.angle;
+						return (
+							<div
+								key={index}
+								className="absolute w-full h-full"
+								style={{
+									backgroundColor: sector.color,
+									clipPath: `polygon(50% 50%, 100% 0%, 100% 100%)`,
+									transform: `rotate(${rotation}deg)`,
+								}}
+								onClick={(e) => handleSectorClick(e, index + 1)}
+							>
 								<div
-									key={index}
-									className="absolute w-full h-full"
+									className="absolute top-0 right-0 w-1/2 h-full flex items-center justify-center"
 									style={{
-										backgroundColor: sector.color,
-										clipPath: `polygon(50% 50%, 100% 0%, 100% 100%)`,
-										transform: `rotate(${rotation}deg)`,
+										transform: `rotate(-${sectorAngle + 90 * index}deg)`,
 									}}
-									onClick={(e) =>
-										handleSectorClick(e, index + 1)
-									}
 								>
-									<div
-										className="absolute top-0 right-0 w-1/2 h-full flex items-center justify-center"
-										style={{
-											transform: `rotate(-${sectorAngle + 90 * index}deg)`,
-										}}
-									>
-										<p className="text-black text-sm font-bold text-center px-2 transform">
-											{sector_text[index]}
-										</p>
-									</div>
+									<p className="text-black text-sm font-bold text-center px-2 transform">
+										{Object.keys(sector_text)[index]}
+									</p>
 								</div>
-							);
-						})}
-					</div>
-				</motion.div>
-				{showContent && (
-					<motion.div
-						className="items-center justify-center"
-						initial={{ opacity: 0, x: 50 }}
-						animate={{ opacity: 1, x: 0 }}
-						exit={{ opacity: 0, x: 50 }}
-						transition={{ duration: 0.5 }}
-					>
-						<h2 className="text-xl font-bold">
-							Content for selected sector
-						</h2>
-					</motion.div>
-				)}
-			</AnimatePresence>
+							</div>
+						);
+					})}
+				</div>
+			</motion.div>
+			{showContent && (
+				<CircleConstellation
+					background={sectors[circleSector - 1].color}
+				/>
+			)}
 		</motion.div>
 	);
 }
