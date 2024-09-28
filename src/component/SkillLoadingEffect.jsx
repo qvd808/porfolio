@@ -25,7 +25,6 @@ export default function SkillLoadingEffect({ onMouseDown }) {
 		exit: { opacity: 0, y: 50 },
 	};
 	const handleSectorClick = (event, sectorNumber) => {
-		console.log(sectorNumber);
 		event.stopPropagation();
 		switch (sectorNumber) {
 			case 1:
@@ -51,7 +50,7 @@ export default function SkillLoadingEffect({ onMouseDown }) {
 
 	return (
 		<motion.div
-			className="relative w-64 h-64 flex items-center justify-center my-4"
+			className="relative w-full h-full grid grid-cols-2 items-center justify-center my-4"
 			key="info"
 			variants={animationEffect}
 			initial="initial"
@@ -62,13 +61,19 @@ export default function SkillLoadingEffect({ onMouseDown }) {
 			}}
 		>
 			<motion.div
-				className="w-full h-full rounded-full overflow-hidden"
-				animate={{ rotate: sectorAngle }}
+				className="w-64 h-64 rounded-full overflow-hidden"
+				animate={{
+					rotate: sectorAngle,
+					// x: sectorAngle === 0 ? 0 : "-30vw",
+				}}
 				transition={{
 					type: "spring",
 					stiffness: 260,
 					damping: 20,
 					duration: spinDuration,
+					x: {
+						duration: 1,
+					},
 				}}
 				onAnimationComplete={() => {
 					if (sectorAngle === 360) {
@@ -93,10 +98,10 @@ export default function SkillLoadingEffect({ onMouseDown }) {
 								<div
 									className="absolute top-0 right-0 w-1/2 h-full flex items-center justify-center"
 									style={{
-										transform: `rotate(-${sectorAngle + 90 * index - 90}deg)`,
+										transform: `rotate(-${sectorAngle + 90 * index}deg)`,
 									}}
 								>
-									<p className="text-black text-sm font-bold text-center px-2 transform -rotate-90">
+									<p className="text-black text-sm font-bold text-center px-2 transform">
 										{sector_text[index]}
 									</p>
 								</div>
@@ -105,6 +110,7 @@ export default function SkillLoadingEffect({ onMouseDown }) {
 					})}
 				</div>
 			</motion.div>
+			{/* <div className="w-3/4 h-full flex">hello</div> */}
 		</motion.div>
 	);
 }
