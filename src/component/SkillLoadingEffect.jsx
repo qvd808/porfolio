@@ -9,12 +9,41 @@ export default function SkillLoadingEffect({ onMouseDown }) {
 
 	const openingDuration = 1;
 	const spinDuration = 0.5;
-	const sector_text = {
-		"Development Skill": [""],
-		"Programming Language": [""],
-		"Coming soon": [""],
-		Exit: [""],
-	};
+	const sectorSkills = [
+		{
+			skill: "Development Skill",
+			list: ["Docker", "Git", "Bash", "CI/CD", "Unix"],
+		},
+		{
+			skill: "Programming Language",
+			list: [
+				"Python",
+				"C",
+				"C++",
+				"HTML",
+				"CSS",
+				"JavaScript",
+				"TypeScript",
+				"Rust",
+				"Java",
+				"SQL",
+			],
+		},
+		{
+			skill: "Frameworks",
+			list: [
+				"React",
+				"React Native",
+				"Node.js",
+				"Express.js",
+				"CUnit",
+				"LLVM",
+				"CUDA",
+				"TailwindCSS",
+			],
+		},
+		{ skill: "Exit", list: [] },
+	];
 	const animationEffect = {
 		initial: { opacity: 0, y: "100vh" },
 		animate: {
@@ -113,7 +142,7 @@ export default function SkillLoadingEffect({ onMouseDown }) {
 									}}
 								>
 									<p className="text-black text-sm font-bold text-center px-2 transform">
-										{Object.keys(sector_text)[index]}
+										{sectorSkills[index].skill}
 									</p>
 								</div>
 							</div>
@@ -124,6 +153,8 @@ export default function SkillLoadingEffect({ onMouseDown }) {
 			{showContent && (
 				<CircleConstellation
 					background={sectors[circleSector - 1].color}
+					skills={sectorSkills[circleSector - 1].list}
+					skillName={sectorSkills[circleSector - 1].skill}
 				/>
 			)}
 		</motion.div>
