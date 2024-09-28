@@ -1,93 +1,162 @@
-import { motion } from "framer-motion";
-import Lottie from "lottie-react";
-import Complete from "./animation/Complete.json"
+import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
+import CircleConstellation from "./CircleSkill";
 
 export default function SkillLoadingEffect({ onMouseDown }) {
+	const [sectorAngle, setSectorAngle] = useState(0);
+	const [showContent, setShowContent] = useState(false);
+	const [circleSector, setCircleSector] = useState(4);
 
-  const [animationComplete, setAnimationComplete] = useState(false);
-
-  const skills = [
-    "Python🐍", "JavaScript", "React", "C++", "Java", "Rust🦀", "TailwindCss"
-  ]
-
-  const animationEffect = {
-    initial: { opacity: 0, y: "30em" },
-    animate: {
-      opacity: 1, y: 0, transition: {
-        type: "spring",
-        duration: 1.5,
-      }
-    },
-    exit: {
-      opacity: 0, y: 50
-    }
-  }
-
-  return (
-    <motion.div
-      className="w-5/6 h-4/5 bg-indigo-800 flex flex-col justify-evenly my-4 rounded-xl"
-      key="info"
-      variants={animationEffect}
-      initial="initial"
-      animate="animate"
-      exit="exit"
-      onMouseDown={onMouseDown}
-      whileHover={{
-        cursor: "pointer",
-        boxShadow: "0 0 2em 0 rgba(245, 235, 132, 0.75)",
-      }}
-    >
-      {
-        skills.map((skill, idx) => (
-          <div className="grid grid-cols-[30%_50%_15%] py-5 md:grid-cols-[20%_70%_10%]"
-            key={`info-display${idx}`}
-            style={{
-              height: "5em"
-            }}
-          >
-
-            <div className="text-center sharetech text-base text-lightBlue md:text-xl"
-              key={`title${idx}`}
-            >
-              {skill}
-            </div>
-
-            <motion.div
-              className="bg-emerald-600"
-              key={`framer${idx}`}
-
-              initial={{
-                width: 0,
-                height: "1.5em",
-              }}
-              animate={{
-                width: "100%",
-                transition: {
-                  duration: 1,
-                  delay: 0.8 + idx/10,
-                }
-              }}
-
-              onAnimationComplete={() => setAnimationComplete(true)}
-            />
-
-            {
-              animationComplete && (
-                <Lottie
-                  key={`Lottie${idx}`}
-                  className="w-16 relative bottom-4 left-2"
-                  animationData={Complete}
-                  autoplay
-                  loop={false}
-                />
-              )
-            }
-
-          </div>
-        ))
-      }
-    </motion.div>
-  )
-
+	const openingDuration = 1;
+	const spinDuration = 0.5;
+	const sectorSkills = [
+		{
+			skill: "Development Skill",
+			list: ["Docker", "Git", "Bash", "CI/CD", "Unix"],
+		},
+		{
+			skill: "Programming Language",
+			list: [
+				"Python",
+				"C",
+				"C++",
+				"HTML",
+				"CSS",
+				"JavaScript",
+				"TypeScript",
+				"Rust",
+				"Java",
+				"SQL",
+			],
+		},
+		{
+			skill: "Frameworks",
+			list: [
+				"React",
+				"React Native",
+				"Node.js",
+				"Express.js",
+				"CUnit",
+				"LLVM",
+				"CUDA",
+				"TailwindCSS",
+			],
+		},
+		{ skill: "Exit", list: [] },
+	];
+	const animationEffect = {
+		initial: { opacity: 0, y: "100vh" },
+		animate: {
+			opacity: 1,
+			y: 0,
+			transition: {
+				opacity: { type: "spring" },
+				type: "tween",
+				duration: openingDuration,
+			},
+		},
+		exit: { opacity: 0, y: 50 },
+	};
+	const handleSectorClick = (event, sectorNumber) => {
+		event.stopPropagation();
+		switch (sectorNumber) {
+			case 1:
+				setSectorAngle(270);
+				setCircleSector(1);
+				setShowContent(true);
+				break;
+			case 2:
+				setSectorAngle(180);
+				setCircleSector(2);
+				setShowContent(true);
+				break;
+			case 3:
+				setSectorAngle(90);
+				setCircleSector(3);
+				setShowContent(true);
+				break;
+			case 4:
+				setSectorAngle(360);
+				setShowContent(false);
+				break;
+		}
+	};
+	const sectors = [
+		{ color: "#FEC771", angle: 90 },
+		{ color: "#4ECB71", angle: 90 },
+		{ color: "#4A9FF5", angle: 90 },
+		{ color: "#FF6B6B", angle: 90 },
+	];
+	return (
+		<motion.div
+			className="relative w-full h-full flex items-center justify-center my-4"
+			key="info"
+			variants={animationEffect}
+			initial="initial"
+			animate="animate"
+			exit="exit"
+			whileHover={{
+				cursor: "pointer",
+			}}
+		>
+			<motion.div
+				className="w-64 h-auto aspect-square flex rounded-full overflow-hidden mx-4"
+				animate={{
+					rotate: sectorAngle,
+					x: showContent ? "-7vw" : 0,
+					// y: showContent ? "-45vh" : 0,
+				}}
+				transition={{
+					type: "spring",
+					stiffness: 260,
+					damping: 20,
+					duration: spinDuration,
+					x: {
+						duration: 1,
+					},
+				}}
+				onAnimationComplete={() => {
+					if (sectorAngle === 360) {
+						onMouseDown();
+					}
+				}}
+			>
+				<div className="relative w-full h-full">
+					{sectors.map((sector, index) => {
+						const rotation = index * sector.angle;
+						return (
+							<div
+								key={index}
+								className="absolute w-full h-full"
+								style={{
+									backgroundColor: sector.color,
+									clipPath: `polygon(50% 50%, 100% 0%, 100% 100%)`,
+									transform: `rotate(${rotation}deg)`,
+								}}
+								onClick={(e) => handleSectorClick(e, index + 1)}
+							>
+								<div
+									className="absolute top-0 right-0 w-1/2 h-full flex items-center justify-center"
+									style={{
+										transform: `rotate(-${sectorAngle + 90 * index}deg)`,
+									}}
+								>
+									<p className="text-black text-sm font-bold text-center px-2 transform">
+										{sectorSkills[index].skill}
+									</p>
+								</div>
+							</div>
+						);
+					})}
+				</div>
+			</motion.div>
+			{showContent && (
+				<CircleConstellation
+					background={sectors[circleSector - 1].color}
+					skills={sectorSkills[circleSector - 1].list}
+					skillName={sectorSkills[circleSector - 1].skill}
+				/>
+			)}
+		</motion.div>
+	);
 }
