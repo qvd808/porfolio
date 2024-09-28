@@ -89,7 +89,7 @@ export default function SkillLoadingEffect({ onMouseDown }) {
 	];
 	return (
 		<motion.div
-			className="relative w-full h-full flex items-center justify-center my-4"
+			className="relative w-full h-full flex flex-col-reverse notPhone:flex-row items-center justify-center notPhone:my-4"
 			key="info"
 			variants={animationEffect}
 			initial="initial"
@@ -103,7 +103,7 @@ export default function SkillLoadingEffect({ onMouseDown }) {
 				className="w-64 h-auto aspect-square flex rounded-full overflow-hidden mx-4"
 				animate={{
 					rotate: sectorAngle,
-					x: showContent ? "-7vw" : 0,
+					x: showContent & (window.innerWidth > 550) ? "-7vw" : 0,
 					// y: showContent ? "-45vh" : 0,
 				}}
 				transition={{

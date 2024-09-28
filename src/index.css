@@ -781,6 +781,10 @@ video {
   flex-direction: column;
 }
 
+.flex-col-reverse {
+  flex-direction: column-reverse;
+}
+
 .flex-nowrap {
   flex-wrap: nowrap;
 }
@@ -1082,6 +1086,11 @@ body {
 @media (min-width: 550px) {
   .notPhone\:right-0 {
     right: 0px;
+  }
+
+  .notPhone\:my-4 {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
   }
 
   .notPhone\:w-40 {
