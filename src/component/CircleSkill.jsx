@@ -9,19 +9,11 @@ const CircleConstellation = ({ background, skills, skillName }) => {
 	let minDistance = 0;
 	let maxDistance = 0;
 
-	if (window.innerWidth > 550) {
-		bigCircleRadius = 150;
-		smallCircleRadius = bigCircleRadius / 3;
+	bigCircleRadius = 150;
+	smallCircleRadius = bigCircleRadius / 3;
 
-		minDistance = bigCircleRadius + smallCircleRadius + 10;
-		maxDistance = bigCircleRadius + smallCircleRadius * 2;
-	} else {
-		bigCircleRadius = 100;
-		smallCircleRadius = (2 * bigCircleRadius) / 5;
-
-		minDistance = bigCircleRadius + smallCircleRadius;
-		maxDistance = bigCircleRadius + smallCircleRadius * 2;
-	}
+	minDistance = bigCircleRadius + smallCircleRadius + 10;
+	maxDistance = bigCircleRadius + smallCircleRadius * 2;
 
 	const colors = [
 		"#FF6B6B",
