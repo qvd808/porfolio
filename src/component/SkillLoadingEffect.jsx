@@ -193,15 +193,20 @@ export default function SkillLoadingEffect({ onMouseDown }) {
 				windowWidth < 550 && (
 					<>
 						{windowWidth < 550 && (
-							<PhysicsSkillBalls
-								skillList={currentSkill.list}
-								skillName={currentSkill.skill}
-								previousSkill={previousSkill.skill}
-								nextSkill={nextSkill.skill}
-								seed={Math.random()}
-								onSwipeLeft={handleSwipeLeft}
-								onSwipeRight={handleSwipeRight}
-							/>
+							<div className="flex flex-col items-center w-full h-full">
+								<PhysicsSkillBalls
+									skillList={currentSkill.list}
+									skillName={currentSkill.skill}
+									previousSkill={previousSkill.skill}
+									nextSkill={nextSkill.skill}
+									seed={Math.random()}
+									onSwipeLeft={handleSwipeLeft}
+									onSwipeRight={handleSwipeRight}
+								/>
+								<button className="bg-red-500 my-5 w-[15%] h-auto aspect-video rounded-lg" onClick={() => {
+									onMouseDown()
+								}}> Exit </button>
+							</div>
 						)}
 					</>
 				)
