@@ -4,16 +4,11 @@ import { AnimatePresence, motion } from "framer-motion";
 const CircleConstellation = ({ background, skills, skillName }) => {
 	const [smallCircles, setSmallCircles] = useState([]);
 
-	let bigCircleRadius = 0;
-	let smallCircleRadius = 0;
-	let minDistance = 0;
-	let maxDistance = 0;
+	let bigCircleRadius = 150;
+	let smallCircleRadius = bigCircleRadius / 3;
 
-	bigCircleRadius = 150;
-	smallCircleRadius = bigCircleRadius / 3;
-
-	minDistance = bigCircleRadius + smallCircleRadius + 10;
-	maxDistance = bigCircleRadius + smallCircleRadius * 2;
+	let minDistance = bigCircleRadius + smallCircleRadius + 10;
+	let maxDistance = bigCircleRadius + smallCircleRadius * 2;
 
 	const colors = [
 		"#FF6B6B",

@@ -8,9 +8,10 @@ export default function SkillLoadingEffect({ onMouseDown }) {
 	const [showContent, setShowContent] = useState(false);
 	const [circleSector, setCircleSector] = useState(4);
 	const [windowWidth, setWindowWidth] = useState(0);
+	const [startX, setStartX] = useState(0);
 
-	const [currentSectorIndex, setCurrentSectorIndex] = useState(0);
-
+	const openingDuration = 1;
+	const spinDuration = 0.5;
 	const sectorSkills = [
 		{
 			skill: "Development Skill",
@@ -46,21 +47,6 @@ export default function SkillLoadingEffect({ onMouseDown }) {
 		},
 		{ skill: "Exit", list: [] },
 	];
-	const handleSwipeLeft = () => {
-		setCurrentSectorIndex((prev) => (prev > 0 ? prev - 1 : sectorSkills.length - 2));
-	};
-
-	const handleSwipeRight = () => {
-		setCurrentSectorIndex((prev) => (prev < sectorSkills.length - 2 ? prev + 1 : 0));
-	};
-
-	const currentSkill = sectorSkills[currentSectorIndex];
-	const previousSkill = sectorSkills[currentSectorIndex > 0 ? currentSectorIndex - 1 : sectorSkills.length - 2];
-	const nextSkill = sectorSkills[currentSectorIndex < sectorSkills.length - 2 ? currentSectorIndex + 1 : 0];
-
-
-	const openingDuration = 1;
-	const spinDuration = 0.5;
 	const animationEffect = {
 		initial: { opacity: 0, y: "100vh" },
 		animate: {
@@ -105,8 +91,20 @@ export default function SkillLoadingEffect({ onMouseDown }) {
 		{ color: "#FF6B6B", angle: 90 },
 	];
 
+	const skillBalls = useMemo(() => {
+		return sectorSkills[1].list.map((skill, index) => ({
+			id: index,
+			skill,
+			x: Math.random() * 90 + 5, // 5% to 95% horizontally
+			y: Math.random() * 90 + 5, // 5% to 95% vertically
+			size: 50, // 30px to 50px
+		}));
+	}, [sectorSkills]);
+
 	useEffect(() => {
 		setWindowWidth(window.innerWidth);
+		// Add any other side effects here
+
 		// Optional: Return a cleanup function if needed
 		return () => {
 			// Cleanup code here
@@ -191,19 +189,7 @@ export default function SkillLoadingEffect({ onMouseDown }) {
 			}
 			{
 				windowWidth < 550 && (
-					<>
-						{windowWidth < 550 && (
-							<PhysicsSkillBalls
-								skillList={currentSkill.list}
-								skillName={currentSkill.skill}
-								previousSkill={previousSkill.skill}
-								nextSkill={nextSkill.skill}
-								seed={Math.random()}
-								onSwipeLeft={handleSwipeLeft}
-								onSwipeRight={handleSwipeRight}
-							/>
-						)}
-					</>
+					<PhysicsSkillBalls sectorSkills={sectorSkills} />
 				)
 			}
 		</motion.div>
